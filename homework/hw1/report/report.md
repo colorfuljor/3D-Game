@@ -127,7 +127,7 @@ OnGUI() : 绘制GUI时候触发。一般在这个函数里绘制GUI菜单。我�
         ![6](img/6.png)
 
     * 用 UML 图描述 三者的关系（请使用 UMLet 14.1.1 stand-alone版本出图）
-
+        ![13](img/13.png)
 
 
 #### 整理相关学习资料，编写简单代码验证以下技术的实现：
@@ -304,16 +304,161 @@ OnGUI() : 绘制GUI时候触发。一般在这个函数里绘制GUI菜单。我�
     * 了解 OnGUI() 事件，提升 debug 能力
     * 提升阅读 API 文档能力
 
-代码
-视频演示
+#### 游戏封面
+<img src="img/14.png" width = 80% height = 80% />
 
-### 3、思考题【选做】
+#### 代码
+```
+//Tic_Tac_Toe.cs
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-* 微软 XNA 引擎的 Game 对象屏蔽了游戏循环的细节，并使用一组虚方法让继承者完成它们，我们称这种设计为“模板方法模式”。
-    * 为什么是“模板方法”模式而不是“策略模式”呢？
-* 将游戏对象组成树型结构，每个节点都是游戏对象（或数）。
-    * 尝试解释组合模式（Composite Pattern / 一种设计模式）。
-    * 使用 BroadcastMessage() 方法，向子对象发送消息。你能写出 BroadcastMessage() 的伪代码吗?
-* 一个游戏对象用许多部件描述不同方面的特征。我们设计坦克（Tank）游戏对象不是继承于GameObject对象，而是 GameObject 添加一组行为部件（Component）。
-    * 这是什么设计模式？
-    * 为什么不用继承设计特殊的游戏对象？
+public class Tic_Tac_Toe : MonoBehaviour
+{
+    // 0 presents nothing, 1 presents "O", 2 presents "X"
+    private int[,] chess = new int[3, 3];
+    private int turn = 1;
+    private bool start = false;
+
+    //Reset the game
+    private void Reset()
+    {
+        turn = 1;
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                chess[i, j] = 0;
+            }
+        }
+    }
+
+    private int isWin()
+    {
+        //Vertical same
+        for (int i = 0; i < 3; i++)
+        {
+            if (chess[i, 0] != 0 && chess[i, 0] == chess[i, 1] && chess[i, 0] == chess[i, 2])
+            {
+                return chess[i, 0];
+            }
+        }
+
+        //Parallel same
+        for (int j = 0; j < 3; j++)
+        {
+            if (chess[0, j] != 0 && chess[0, j] == chess[1, j] && chess[0, j] == chess[2, j])
+            {
+                return chess[0, j];
+            }
+        }
+
+        //diagonal same
+        if (chess[0, 0] != 0 && chess[0, 0] == chess[1, 1] && chess[0, 0] == chess[2, 2]) return chess[1, 1];
+        if (chess[0, 2] != 0 && chess[0, 2] == chess[1, 1] && chess[0, 2] == chess[2, 0]) return chess[1, 1];
+
+        //Judge if it's locked
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (chess[i, j] == 0)
+                {
+                    return 0;
+                }
+            }
+        }
+        return 3;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        start = false;
+        Reset();  
+    }
+
+    //Generate GUI
+    void OnGUI()
+    {
+        GUI.skin.button.fontSize = 20;
+        GUI.skin.label.fontSize = 30;
+        if (!start)
+        {
+            if (GUI.Button(new Rect(300, 300, 150, 50), "Start"))
+            {
+                start = true;
+            }
+            GUI.skin.label.fontSize = 60;
+            GUI.Label(new Rect(218, 110, 314, 100), "Tic-Tac-Toe");
+        }
+        else
+        {
+            if (GUI.Button(new Rect(300, 340, 150, 50), "Reset"))
+            {
+                Reset();
+            }
+
+            int state = isWin();
+            if (state == 1)
+            {
+                GUI.Label(new Rect(322, 20, 106, 50), "O Wins!");
+            }
+            else if (state == 2)
+            {
+                GUI.Label(new Rect(323, 20, 104, 50), "X Wins!");
+            }
+            else if (state == 3)
+            {
+                GUI.Label(new Rect(284, 20, 182, 50), "No one Wins.");
+            }
+            else
+            {
+                if (turn == 1)
+                    GUI.Label(new Rect(364, 6, 22, 50), "O");
+                else if (turn == 2)
+                    GUI.Label(new Rect(364, 20, 22, 50), "X");
+            }
+            
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (chess[i, j] == 1)
+                    {
+                        GUI.Button(new Rect(i * 80 + 255, j * 80 + 80, 80, 80), "O");
+                    }
+                    else if (chess[i, j] == 2)
+                    {
+                        GUI.Button(new Rect(i * 80 + 255, j * 80 + 80, 80, 80), "X");
+                    }
+
+                    if (GUI.Button(new Rect(i * 80 + 255, j * 80 + 80, 80, 80), "") && state == 0)
+                    {
+                        chess[i, j] = turn;
+                        turn = 3 - turn;
+                    }
+                }
+            }
+        }
+    }
+ 
+}
+```
+
+#### 视频演示
+
+游戏开始：
+
+<img src="gif/1.gif" width = 80% height = 80% />
+
+游戏ing（无人胜出版）：
+
+<img src="gif/2.gif" width = 80% height = 80% />
+
+游戏ing（O 胜出版）：
+
+<img src="gif/3.gif" width = 80% height = 80% />
