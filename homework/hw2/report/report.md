@@ -1,12 +1,12 @@
-## 第二次作业
+# 第二次作业
 
-## 1、简答并用程序验证
+### 1、简答并用程序验证
 
-### 游戏对象运动的本质是什么？
+#### 游戏对象运动的本质是什么？
 
 游戏运动本质就是使用矩阵变换（平移、旋转、缩放）改变游戏对象的空间属性。其空间属性就包括position、rotation、scale，这些属性控制着游戏对象的运动，分别控制着平移、旋转、缩放。
 
-### 请用三种方法以上方法，实现物体的抛物线运动。（如，修改Transform属性，使用向量Vector3的方法…）
+#### 请用三种方法以上方法，实现物体的抛物线运动。（如，修改Transform属性，使用向量Vector3的方法…）
 
 1. 修改Transform属性
 ```
@@ -92,7 +92,7 @@ public class parabolic : MonoBehaviour
 
 ```
 
-### 写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上。
+#### 写一个程序，实现一个完整的太阳系， 其他星球围绕太阳的转速必须不一样，且不在一个法平面上。
 
 **Script：**
 ```
@@ -142,9 +142,9 @@ public class SolarSystem : MonoBehaviour
 
 项目文件在[src目录](../src)下的Solar System中。
 
-## 2、编程实践
+### 2、编程实践
 
-### 阅读以下游戏脚本
+#### 阅读以下游戏脚本
 > Priests and Devils
 >  
 > Priests and Devils is a puzzle game in which you will help the Priests and Devils to cross the river within the time limit. There are 3 priests and 3 devils at one side of the river. They all want to get to the other side of this river, but there is only one boat and this boat can only carry two persons each time. And there must be one person steering the boat from one side to the other side. In the flash game, you can click on them to move them and click the go button to move the boat to the other direction. If the priests are out numbered by the devils on either side of the river, they get killed and the game is over. You can try it in many > ways. Keep all priests alive! Good luck!
@@ -615,9 +615,9 @@ Gif：
 <img src="gif/1.gif" width = 50% height = 50% />  
 
 
-## 3、思考题
+### 3、思考题
 
-### 使用向量与变换，实现并扩展 Tranform 提供的方法，如 Rotate、RotateAround 等
+#### 使用向量与变换，实现并扩展 Tranform 提供的方法，如 Rotate、RotateAround 等
 
 **实现Rotate、RotateAround**，其中我还对Rotate实现了重载。
 ```
