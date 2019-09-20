@@ -1,6 +1,6 @@
 ## 第二次作业
 
-## 1、简答并用程序验证【建议做】
+## 1、简答并用程序验证
 
 ### 游戏对象运动的本质是什么？
 
@@ -182,7 +182,6 @@ public class SolarSystem : MonoBehaviour
 
 其中原色正方体代表牧师，原色球体代表恶魔，原始长方体代表船，还有水和陆地
 
-##### UML图
 ##### 代码（脚本script）
 
 这是项目Assets目录结构，可以看到在Scripts有三个目录，这就是我的MVC结构：
@@ -616,7 +615,7 @@ Gif：
 <img src="gif/1.gif" width = 50% height = 50% />  
 
 
-3、思考题【选做】
+## 3、思考题
 
 ### 使用向量与变换，实现并扩展 Tranform 提供的方法，如 Rotate、RotateAround 等
 
