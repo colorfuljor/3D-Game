@@ -341,3 +341,5 @@ public class Judge
         return judge.isOver();
     }
 ```
+
+牧师与魔鬼演示视频：[https://v.youku.com/v_show/id_XNDM3NzczOTE3Ng==.html?spm=a2hzp.8244740.0.0](https://v.youku.com/v_show/id_XNDM3NzczOTE3Ng==.html?spm=a2hzp.8244740.0.0)
