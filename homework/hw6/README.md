@@ -6,7 +6,7 @@
 
 打飞碟adapter版的打开方式：新建项目后，打开Hit UFO/Assets/Scenes下的SampleScene.unity场景并点击运行开始即可进入游戏。
 
-打飞碟adapter版演示视频：[https://v.youku.com/v_show/id_XNDM3OTU4OTU4MA==.html?spm=a2hzp.8244740.0.0](https://v.youku.com/v_show/id_XNDM3OTU4OTU4MA==.html?spm=a2hzp.8244740.0.0)
+打飞碟adapter版演示视频：[https://v.youku.com/v_show/id_XNDQwMjI1MDA3Ng==.html?spm=a2hzp.8244740.0.0](https://v.youku.com/v_show/id_XNDQwMjI1MDA3Ng==.html?spm=a2hzp.8244740.0.0)
 
 00:03 展示了游戏暂停功能  
 00:08 Round 1  
