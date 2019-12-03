@@ -146,4 +146,9 @@ public class BoatModel
         characters = new CharacterModel[2];
         click.SetStatus(0);
     }
+
+    public CharacterModel[] GetCharacters()
+    {
+        return characters;
+    }
 }

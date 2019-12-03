@@ -100,6 +100,11 @@ public class LandModel
         return count;
     }
 
+    public CharacterModel[] GetCharacters()
+    {
+        return characters;
+    }
+
     public void Reset()
     {
         characters = new CharacterModel[6];

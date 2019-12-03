@@ -177,4 +177,74 @@ public class FirstController : MonoBehaviour, ISceneController, IUserAction
             characters[i].Reset();
         }
     }
+
+    public bool Tips()
+    {
+        int[] fromCount = fromLand.GetCharacterNum();
+        int[] boatCount = boat.GetCharacterNum();
+        PAndD solution = new PAndD();
+
+        if (solution.BFSearch(new PAndDNode(fromCount[0] + boatCount[0], fromCount[1] + boatCount[1]), new PAndDNode(0, 0))) 
+        {
+            // 船在左边
+            if (fromLand.GetToOrFrom() != boat.GetToOrFrom())
+            {
+                return false;
+            }
+
+            PAndDNode nextToMove = solution.GetNextToMove();
+            CharacterModel[] fromCharacters = fromLand.GetCharacters();
+
+            int pNum = fromCount[0] - nextToMove.GetPriestsNum();
+            int dNum = fromCount[1] - nextToMove.GetDevilsNum();
+
+            foreach (CharacterModel character in boat.GetCharacters())
+            {
+                if (pNum >= 0)
+                    break;
+                if (character != null && character.GetType() == 0)
+                {
+                    MoveCharacter(character);
+                    pNum++;
+                }
+            }
+
+            foreach (CharacterModel character in boat.GetCharacters())
+            {
+                if (dNum >= 0)
+                    break;
+                if (character != null && character.GetType() == 1)
+                {
+                    MoveCharacter(character);
+                    dNum++;
+                }
+            }
+
+            for (int i = 0; i < pNum; i++)
+            {
+                foreach (CharacterModel character in fromCharacters)
+                {
+                    if (character != null && character.GetType() == 0)
+                    {
+                        MoveCharacter(character);
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < dNum; i++)
+            {
+                foreach (CharacterModel character in fromCharacters)
+                {
+                    if (character != null && character.GetType() == 1)
+                    {
+                        MoveCharacter(character);
+                        break;
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 }

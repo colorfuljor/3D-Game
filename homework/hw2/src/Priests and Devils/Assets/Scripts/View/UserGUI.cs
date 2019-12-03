@@ -27,6 +27,17 @@ public class UserGUI : MonoBehaviour
     {
         if (start == 1)
         {
+            if (status == 0)
+            {
+                if (GUI.Button(new Rect(300, 340, 150, 50), "Tips", buttonStyle))
+                {
+                    if (!action.Tips())
+                    {
+                        Debug.Log("?");
+                    }
+                }
+            }
+
             if (status == 1)
             {
                 GUI.Label(new Rect(322, 20, 106, 150), "Gameover!", style);
